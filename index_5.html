@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vivid Technologies | Dubai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Three.js (often mistaken as j3 plugin) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: #00e5ff;
+            animation: glow 2s infinite alternate;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 80px 10%;
+            animation: slideUp 1.5s ease;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,229,255,0.4);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.6);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00e5ff; }
+            to { text-shadow: 0 0 30px #00e5ff; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>Vivid Technologies</h1>
+        <p>Dubai Based IT Infrastructure & Surveillance Solutions</p>
+    </div>
+</header>
+
+<section>
+    <h2>Our Services</h2>
+    <br>
+    <div class="services">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7" alt="CCTV">
+            <h3>CCTV Surveillance</h3>
+            <p>Advanced security camera installations for enterprises and residences.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Networking">
+            <h3>Network Infrastructure</h3>
+            <p>Structured cabling, server rooms, and enterprise networking solutions.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7" alt="Video">
+            <h3>Video & Display Systems</h3>
+            <p>Digital signage, LED walls, and professional AV systems.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Lighting">
+            <h3>Smart Lighting</h3>
+            <p>Energy-efficient and intelligent lighting automation solutions.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Vivid Technologies | Dubai, UAE</p>
+</footer>
+
+<script>
+    // Three.js Animated Background
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const geometry = new THREE.BufferGeometry();
+    const particlesCount = 5000;
+    const positions = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 1000;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({ color: 0x00e5ff, size: 1 });
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    camera.position.z = 300;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0005;
+        particles.rotation.x += 0.0003;
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
+</body>
+</html>

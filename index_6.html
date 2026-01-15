@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vivid Technologies | Dubai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #ffffff;
+            color: #222;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: #0077ff;
+            animation: fadeIn 2s ease;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #555;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: #0077ff;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,119,255,0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #0077ff;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: #f5f7fa;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 600px) {
+            section { padding: 50px 6%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>Vivid Technologies</h1>
+        <p>IT Infrastructure, Networking & Surveillance Solutions – Dubai</p>
+    </div>
+</header>
+
+<section>
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581092919531-6b6f3b87d3c3" alt="CCTV">
+            <h3>CCTV Surveillance</h3>
+            <p>Reliable and high-definition security surveillance systems.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581091012184-5c8f2c5c9b17" alt="Networking">
+            <h3>Network Infrastructure</h3>
+            <p>Enterprise-grade structured cabling and networking solutions.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7" alt="Video Systems">
+            <h3>Video Solutions</h3>
+            <p>Professional video walls and digital display installations.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Lighting">
+            <h3>Smart Lighting</h3>
+            <p>Intelligent and energy-efficient lighting automation systems.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Vivid Technologies | Dubai, UAE</p>
+</footer>
+
+<script>
+    // Three.js Network Style Background (White Theme)
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const nodes = [];
+    const nodeCount = window.innerWidth < 768 ? 60 : 120;
+
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(nodeCount * 3);
+
+    for (let i = 0; i < nodeCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 400;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 400;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 400;
+        nodes.push({
+            x: positions[i * 3],
+            y: positions[i * 3 + 1],
+            z: positions[i * 3 + 2]
+        });
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({ color: 0x0077ff, size: 2 });
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    camera.position.z = 300;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        points.rotation.y += 0.0006;
+        points.rotation.x += 0.0003;
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dubai BuildTech Contracting LLC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --primary: #0a4cff;
+      --secondary: #f5f7fa;
+      --text-dark: #222;
+      --text-light: #666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 22px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 14px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 80px 40px;
+      gap: 40px;
+      background: var(--secondary);
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--text-light);
+      font-size: 17px;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h3 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .service-card div {
+      padding: 20px;
+    }
+
+    .service-card h4 {
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: #0b1b3a;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Dubai BuildTech</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h2>Leading Construction & IT Infrastructure Company in Dubai</h2>
+    <p>
+      Delivering high-quality construction, ELV, networking, CCTV surveillance,
+      BMS & lighting solutions across UAE.
+    </p>
+  </div>
+  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Dubai Construction">
+</section>
+
+<section>
+  <div class="section-title">
+    <h3>Our Services</h3>
+    <p>Complete construction & smart infrastructure solutions</p>
+  </div>
+
+  <div class="services">
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758" alt="Construction">
+      <div>
+        <h4>Construction & Fit-Out</h4>
+        <p>Commercial and residential construction, interior & fit-out works.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1558002038-1055907df827" alt="Networking">
+      <div>
+        <h4>Networking Solutions</h4>
+        <p>Structured cabling, fiber optics, switching & routing systems.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" alt="CCTV">
+      <div>
+        <h4>CCTV & Surveillance</h4>
+        <p>IP cameras, access control, monitoring & security solutions.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5" alt="BMS">
+      <div>
+        <h4>BMS & Lighting</h4>
+        <p>Smart building automation & energy-efficient lighting systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="about">
+    <div>
+      <h3>Why Choose Us</h3>
+      <p>
+        Based in Dubai, we deliver projects with international standards,
+        experienced engineers, and timely execution across UAE.
+      </p>
+      <p>
+        Our AMC & technical outsourcing services ensure smooth operations
+        and long-term reliability.
+      </p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1496560736447-94aead8bc8d8" alt="Dubai Skyline">
+  </div>
+</section>
+
+<footer>
+  © 2026 Dubai BuildTech Contracting LLC – UAE  
+</footer>
+
+</body>
+</html>
