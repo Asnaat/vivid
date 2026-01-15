@@ -179,6 +179,38 @@
             position: relative;
         }
 
+        .hero img {
+            width: 100%;
+            border-radius: 12px;
+
+            animation: heroZoom 12s ease-in-out infinite;
+            transform-origin: center center;
+
+        }
+
+        .service-card img {
+            width: 100%;
+            border-radius: 12px;
+
+            animation: heroZoom 12s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        /* Zoom in & out animation */
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         /* ===================== */
         /* SECTIONS */
         /* ===================== */
@@ -288,6 +320,42 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 576px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                    padding: 60px 21px;
+            }
+
+            h1 {
+                font-size: 22px !important;
+            }
+
+            h2 {
+                font-size: 20px !important;
+            }
+
+            h3 {
+                font-size: 18px !important;
+            }
+
+            p {
+                font-size: 14px !important;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -385,7 +453,7 @@
                     and long-term reliability.
                 </p>
             </div>
-            <img src="https://images.unsplash.com/photo-1496560736447-94aead8bc8d8" alt="Dubai Skyline">
+            <img src="assets/images/dubai-office.jpg" alt="Dubai Skyline">
         </div>
     </section>
 
