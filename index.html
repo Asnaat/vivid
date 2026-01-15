@@ -139,8 +139,9 @@
             padding: 80px 40px;
 
             /* GLASS EFFECT */
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(14px);
+           background: rgb(255 255 255 / 0%);
+
+            backdrop-filter: blur(1px);
             -webkit-backdrop-filter: blur(14px);
 
             border-radius: 24px;
@@ -522,11 +523,11 @@
             const width = window.innerWidth;
 
             if (width < 576) {
-                return { count: 23, dist: 80, opacity: 0.18, speed: 0.2 };
+                return { count: 30, dist: 85,opacity:0.2, speed: 0.2 };
             } else if (width < 1024) {
-                return { count: 40, dist: 100, opacity: 0.2, speed: 0.28 };
+                return { count: 40, dist: 100,opacity:0.2, speed: 0.28 };
             } else {
-                return { count: 70, dist: 140, opacity: 0.25, speed: 0.4 };
+                return { count: 70, dist: 140,opacity:0.25, speed: 0.4 };
             }
         }
 
