@@ -139,7 +139,7 @@
             padding: 80px 40px;
 
             /* GLASS EFFECT */
-           background: rgb(255 255 255 / 0%);
+            background: rgb(255 255 255 / 0%);
 
             backdrop-filter: blur(1px);
             -webkit-backdrop-filter: blur(14px);
@@ -313,18 +313,13 @@
         /* RESPONSIVE */
         /* ===================== */
         @media (max-width: 1024px) {
-            .hero {
+            /* .hero {
                 background: rgba(255, 255, 255, 0.3);
                 backdrop-filter: blur(10px);
-            }
+            } */
         }
 
-        @media (max-width: 576px) {
-            .hero {
-                padding: 60px 20px;
-                backdrop-filter: blur(8px);
-            }
-        }
+
 
         @media (max-width: 768px) {
             nav {
@@ -388,8 +383,9 @@
                 grid-template-columns: 1fr;
             }
 
-            #network-bg {
-                /* display: none; */
+            .hero {
+                padding: 60px 20px;
+                /* backdrop-filter: blur(8px); */
             }
 
         }
@@ -428,10 +424,10 @@
 
     <section class="hero">
         <div>
-            <h2>Leading Construction & IT Infrastructure Company in Dubai</h2>
+            <h2>Leading Construction & IT Infrastructure Company </h2>
             <p>
                 Delivering high-quality construction, ELV, networking, CCTV surveillance,
-                BMS & lighting solutions across UAE.
+                BMS & lighting solutions.
             </p>
         </div>
         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
@@ -523,11 +519,11 @@
             const width = window.innerWidth;
 
             if (width < 576) {
-                return { count: 30, dist: 85,opacity:0.2, speed: 0.2 };
+                return { count: 30, dist: 85, opacity: 0.2, speed: 0.2 };
             } else if (width < 1024) {
-                return { count: 40, dist: 100,opacity:0.2, speed: 0.28 };
+                return { count: 40, dist: 100, opacity: 0.2, speed: 0.28 };
             } else {
-                return { count: 70, dist: 140,opacity:0.25, speed: 0.4 };
+                return { count: 70, dist: 140, opacity: 0.25, speed: 0.4 };
             }
         }
 
