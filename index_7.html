@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Vivid Technologies | Dubai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close-btn {
+            display: none;
+            /* hidden on desktop */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00e5ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00e5ff;
+        }
+
+        /* Hamburger */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: #00e5ff;
+            animation: glow 2s infinite alternate;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.9;
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 80px 8%;
+            animation: slideUp 1.5s ease;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 50px;
+            color: #00e5ff;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.4);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00e5ff;
+            }
+
+            to {
+                text-shadow: 0 0 30px #00e5ff;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(60px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+                display: block;
+                font-size: 1.8rem;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                /* right: -100%; */
+                 left: -100%; 
+                /* hidden on right */
+                width: 260px;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s ease;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                left: 0;
+                /* slide in from right */
+            }
+
+            .close-btn {
+                display: block;
+                /* ONLY on mobile */
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                font-size: 1.8rem;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="home">
+        <div class="navbar">
+            <!-- Hamburger on LEFT -->
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+            <div class="logo">Vivid</div>
+
+            <nav>
+                <ul id="navMenu">
+                    <!-- Close icon (mobile only) -->
+                    <span class="close-btn" onclick="toggleMenu()">✕</span>
+                    <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+                    <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="hero">
+            <div>
+                <h1>Vivid Technologies</h1>
+                <p>Dubai Based IT Infrastructure & Surveillance Solutions</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7">
+                <h3>CCTV Surveillance</h3>
+                <p>Advanced security camera installations.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
+                <h3>Network Infrastructure</h3>
+                <p>Structured cabling & enterprise networking.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7">
+                <h3>Video Systems</h3>
+                <p>LED walls & professional AV systems.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
+                <h3>Smart Lighting</h3>
+                <p>Intelligent & energy-efficient lighting.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Vivid Technologies | Dubai, UAE
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Three.js Background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const geometry = new THREE.BufferGeometry();
+        const count = 5000;
+        const positions = new Float32Array(count * 3);
+
+        for (let i = 0; i < positions.length; i++) {
+            positions[i] = (Math.random() - 0.5) * 1000;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const material = new THREE.PointsMaterial({ color: 0x00e5ff, size: 1 });
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 300;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.0005;
+            particles.rotation.x += 0.0003;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+</body>
+
+</html>
